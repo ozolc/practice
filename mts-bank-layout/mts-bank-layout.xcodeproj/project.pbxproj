@@ -7,17 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02113BC22BCE8BF00BA9D7C /* Extension+Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02113BB22BCE8BF00BA9D7C /* Extension+Anchor.swift */; };
+		B02113BF22BCE9E900BA9D7C /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02113BE22BCE9E900BA9D7C /* PageCell.swift */; };
+		B02113C322BD053700BA9D7C /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02113C222BD053700BA9D7C /* Page.swift */; };
+		B02113C522BD087700BA9D7C /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02113C422BD087700BA9D7C /* BaseTabBarController.swift */; };
 		B0EEFD7122BCD10E00592470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EEFD7022BCD10E00592470 /* AppDelegate.swift */; };
-		B0EEFD7322BCD10E00592470 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EEFD7222BCD10E00592470 /* ViewController.swift */; };
+		B0EEFD7322BCD10E00592470 /* SchetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EEFD7222BCD10E00592470 /* SchetViewController.swift */; };
 		B0EEFD7622BCD10E00592470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0EEFD7422BCD10E00592470 /* Main.storyboard */; };
 		B0EEFD7822BCD10F00592470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0EEFD7722BCD10F00592470 /* Assets.xcassets */; };
 		B0EEFD7B22BCD10F00592470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0EEFD7922BCD10F00592470 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B02113BB22BCE8BF00BA9D7C /* Extension+Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Anchor.swift"; sourceTree = "<group>"; };
+		B02113BE22BCE9E900BA9D7C /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		B02113C222BD053700BA9D7C /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		B02113C422BD087700BA9D7C /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		B0EEFD6D22BCD10E00592470 /* mts-bank-layout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mts-bank-layout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0EEFD7022BCD10E00592470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B0EEFD7222BCD10E00592470 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B0EEFD7222BCD10E00592470 /* SchetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchetViewController.swift; sourceTree = "<group>"; };
 		B0EEFD7522BCD10E00592470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B0EEFD7722BCD10F00592470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0EEFD7A22BCD10F00592470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,10 +43,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B02113BA22BCE89500BA9D7C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B02113BB22BCE8BF00BA9D7C /* Extension+Anchor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B02113BD22BCE9C700BA9D7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B02113BE22BCE9E900BA9D7C /* PageCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B0EEFD6422BCD10E00592470 = {
 			isa = PBXGroup;
 			children = (
 				B0EEFD6F22BCD10E00592470 /* mts-bank-layout */,
+				B0EEFD8622BCD4E600592470 /* Additional */,
 				B0EEFD6E22BCD10E00592470 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,14 +79,41 @@
 		B0EEFD6F22BCD10E00592470 /* mts-bank-layout */ = {
 			isa = PBXGroup;
 			children = (
+				B02113BD22BCE9C700BA9D7C /* View */,
+				B0EEFD8522BCD4C700592470 /* Controller */,
+				B02113BA22BCE89500BA9D7C /* Extensions */,
+				B0EEFD8222BCD43D00592470 /* Model */,
+			);
+			path = "mts-bank-layout";
+			sourceTree = "<group>";
+		};
+		B0EEFD8222BCD43D00592470 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B02113C222BD053700BA9D7C /* Page.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B0EEFD8522BCD4C700592470 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B02113C422BD087700BA9D7C /* BaseTabBarController.swift */,
+				B0EEFD7222BCD10E00592470 /* SchetViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B0EEFD8622BCD4E600592470 /* Additional */ = {
+			isa = PBXGroup;
+			children = (
 				B0EEFD7022BCD10E00592470 /* AppDelegate.swift */,
-				B0EEFD7222BCD10E00592470 /* ViewController.swift */,
 				B0EEFD7422BCD10E00592470 /* Main.storyboard */,
 				B0EEFD7722BCD10F00592470 /* Assets.xcassets */,
 				B0EEFD7922BCD10F00592470 /* LaunchScreen.storyboard */,
 				B0EEFD7C22BCD10F00592470 /* Info.plist */,
 			);
-			path = "mts-bank-layout";
+			path = Additional;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0EEFD7322BCD10E00592470 /* ViewController.swift in Sources */,
+				B02113C522BD087700BA9D7C /* BaseTabBarController.swift in Sources */,
+				B02113BC22BCE8BF00BA9D7C /* Extension+Anchor.swift in Sources */,
+				B0EEFD7322BCD10E00592470 /* SchetViewController.swift in Sources */,
+				B02113C322BD053700BA9D7C /* Page.swift in Sources */,
+				B02113BF22BCE9E900BA9D7C /* PageCell.swift in Sources */,
 				B0EEFD7122BCD10E00592470 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +339,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "mts-bank-layout/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Additional/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "mts-bank-layout/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Additional/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
