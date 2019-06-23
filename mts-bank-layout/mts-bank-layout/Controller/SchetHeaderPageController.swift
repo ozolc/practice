@@ -8,67 +8,54 @@
 
 import UIKit
 
-class SchetViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class SchetHeaderPageController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "cellId"
-    
-    lazy var pageControl: UIPageControl = {
-        let pc = UIPageControl()
-        pc.pageIndicatorTintColor = .lightGray
-        pc.currentPageIndicatorTintColor = UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1)
-        pc.numberOfPages = self.pages.count + 1
-        return pc
-    }()
+    let headerId = "headerId"
     
     var pageControlBottomAnchor: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .lightGray
+        collectionView.isPagingEnabled = true
         
-        view.addSubview(pageControl)
-        
-        pageControlBottomAnchor = pageControl.anchor(nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)[1]
-//
         registerCells()
     }
     
-    let pages: [Page] = {
-        let firstPage = Page(schet: "Счет 40702810100000000123", sum: "12 345,01 ₽", overdraft: "12 345,20 ₽ с овердрафтом", isOperation: true)
-        let secondPage = Page(schet: "Счет 40702810100000000123", sum: "10 000,00 ₽", overdraft: "12 345,20 ₽ с овердрафтом", isOperation: false)
-        
-        return [firstPage, secondPage]
-    }()
+    fileprivate func registerCells() {
+        collectionView.register(PageGroupCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(PageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+    }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return .init(width: view.frame.width, height: 250)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: view.frame.width, height: 150)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pages.count
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
         
-        let page = pages[(indexPath as NSIndexPath).item]
-        cell.page = page
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        
+        cell.backgroundColor = .white
         
         return cell
     }
     
-    fileprivate func registerCells() {
-        collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
-    }
     
-    init() {
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 //class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

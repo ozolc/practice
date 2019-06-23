@@ -35,6 +35,8 @@ class PageCell: UICollectionViewCell {
         }
     }
     
+    let horizontalController = SchetHorizontalController()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -44,26 +46,16 @@ class PageCell: UICollectionViewCell {
     let textView: UITextView = {
         let tv = UITextView()
         tv.isEditable = false
-        tv.contentInset = UIEdgeInsets(top: 24, left: 0, bottom: 0, right: 0)
-        tv.backgroundColor = UIColor.red
-//        tv.heightAnchor.constraint(equalToConstant: 240).isActive = true
+//        tv.textAlignment = .center
+        tv.textContainerInset = UIEdgeInsets(top: 50, left: 5, bottom: 5, right: 5)
+        tv.backgroundColor = .red
         return tv
     }()
     
     func setupViews() {
-        let stackView = UIStackView(arrangedSubviews: [textView])
-        
-        stackView.spacing = 10
-//        stackView.alignment = .center
-        stackView.axis = .vertical
-        
-        addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        
+
+        addSubview(textView)
+        textView.fillSuperview(padding: .init(top: 8, left: 0, bottom: 8, right: 0))
     }
     
     required init?(coder aDecoder: NSCoder) {
