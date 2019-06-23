@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol SchetHeaderPageDelegate: class {
+    func updateCurrentPage(with pageNumber: Int)
+}
+
 class SchetHeaderPageController: BaseListController, UICollectionViewDelegateFlowLayout {
     
-    fileprivate let cellId = "cellId"
-    let headerId = "headerId"
+    var currentPage = 0
     
-    var pageControlBottomAnchor: NSLayoutConstraint?
+    fileprivate let pageCellId = "pageCellId"
+    fileprivate let pageButtonId = "pageButtonId"
+    fileprivate let headerId = "headerId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +30,22 @@ class SchetHeaderPageController: BaseListController, UICollectionViewDelegateFlo
     }
     
     fileprivate func registerCells() {
-        collectionView.register(PageGroupCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.register(PageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView.register(PageCell.self, forCellWithReuseIdentifier: pageCellId)
+        collectionView.register(PageButtonCell.self, forCellWithReuseIdentifier: pageButtonId)
+        collectionView.register(PageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: pageButtonId)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PageHeader
+        
+        header.pageControl.currentPage = indexPath.item
+        
         return header
     }
+    
+    //    func updateCurrentPage(with pageNumber: Int) {
+    //        self.currentPage = pageNumber
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return .init(width: view.frame.width, height: 250)
@@ -48,90 +61,21 @@ class SchetHeaderPageController: BaseListController, UICollectionViewDelegateFlo
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        
-        cell.backgroundColor = .white
-        
-        return cell
+        if indexPath.section == 0 {
+            switch indexPath.item {
+            case 0:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pageCellId, for: indexPath) as! PageCell
+                return cell
+            case 1:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pageButtonId, for: indexPath) as! PageButtonCell
+                return cell
+            default:
+                return UICollectionViewCell()
+            }
+            
+            //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
+        }
+        return UICollectionViewCell()
     }
     
-    
 }
-
-//class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-//
-//    lazy var collectionView: UICollectionView = {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
-//        layout.minimumLineSpacing = 10
-//        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cv.backgroundColor = .red
-//        cv.dataSource = self
-//        cv.delegate = self
-//        cv.isPagingEnabled = true
-//        return cv
-//    }()
-//
-//    lazy var pageControl: UIPageControl = {
-//        let pc = UIPageControl()
-//        pc.pageIndicatorTintColor = .lightGray
-//        pc.currentPageIndicatorTintColor = .white
-//        pc.numberOfPages = self.topData.count + 1
-//        return pc
-//    }()
-//
-//    let topCellId = "topCellId"
-//
-//    override func viewDidLoad() {
-//
-//        super.viewDidLoad()
-//
-//        view.addSubview(collectionView)
-////        view.addSubview(pageControl)
-//
-////        _ = pageControl.anchor(top: guide.topAnchor, leading: guide.leadingAnchor, bottom: guide.bottomAnchor, trailing: guide.trailingAnchor)
-//
-//         collectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-//
-//        registerCells()
-//    }
-//
-//    let topData: [TopData] = {
-//        let firstPage = TopData(schet: "40702810100000000123", sum: "12 345,01 ₽", overdraft: "12 345,20 ₽ с овердрафтом", isOperation: true)
-//        let secondPage = TopData(schet: "40702810100000000123", sum: "10 000,00 ₽", overdraft: "12 345,20 ₽ с овердрафтом", isOperation: false)
-//
-//        return [firstPage, secondPage]
-//    }()
-//
-//
-//    fileprivate func registerCells() {
-//        collectionView.register(TopCell.self, forCellWithReuseIdentifier: topCellId)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return topData.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: topCellId, for: indexPath)
-////            as! TopCell
-////
-////        let data = topData[(indexPath as NSIndexPath).item]
-////        cell.data = data
-//
-//        return cell
-//    }
-////        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: topCellId, for: indexPath) as! TopCell
-////
-////        let data = topData[(indexPath as NSIndexPath).item]
-////        cell.data = data
-////
-////        return cell
-//
-//    private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        return CGSize(width: view.frame.width, height: view.frame.height)
-//    }
-//
-//}
-//

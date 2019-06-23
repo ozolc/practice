@@ -13,9 +13,9 @@
 		B0CD216522BF50B00051BB76 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CD216422BF50B00051BB76 /* UIView+Layout.swift */; };
 		B0CD216922BF5C430051BB76 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CD216822BF5C430051BB76 /* BaseListController.swift */; };
 		B0CD216B22BF5F380051BB76 /* SchetHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CD216A22BF5F380051BB76 /* SchetHorizontalController.swift */; };
-		B0CD216D22BF63A30051BB76 /* PageGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CD216C22BF63A30051BB76 /* PageGroupCell.swift */; };
 		B0CD216F22BF6CFF0051BB76 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CD216E22BF6CFF0051BB76 /* UITextView+Extension.swift */; };
 		B0CD217322BF75130051BB76 /* PageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CD217222BF75130051BB76 /* PageHeader.swift */; };
+		B0DFB60622BFCAEA00CD9A9B /* PageButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DFB60522BFCAEA00CD9A9B /* PageButtonCell.swift */; };
 		B0EEFD7122BCD10E00592470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EEFD7022BCD10E00592470 /* AppDelegate.swift */; };
 		B0EEFD7322BCD10E00592470 /* SchetHeaderPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EEFD7222BCD10E00592470 /* SchetHeaderPageController.swift */; };
 		B0EEFD7622BCD10E00592470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0EEFD7422BCD10E00592470 /* Main.storyboard */; };
@@ -30,9 +30,9 @@
 		B0CD216422BF50B00051BB76 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		B0CD216822BF5C430051BB76 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		B0CD216A22BF5F380051BB76 /* SchetHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchetHorizontalController.swift; sourceTree = "<group>"; };
-		B0CD216C22BF63A30051BB76 /* PageGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageGroupCell.swift; sourceTree = "<group>"; };
 		B0CD216E22BF6CFF0051BB76 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		B0CD217222BF75130051BB76 /* PageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageHeader.swift; sourceTree = "<group>"; };
+		B0DFB60522BFCAEA00CD9A9B /* PageButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageButtonCell.swift; sourceTree = "<group>"; };
 		B0EEFD6D22BCD10E00592470 /* mts-bank-layout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mts-bank-layout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0EEFD7022BCD10E00592470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0EEFD7222BCD10E00592470 /* SchetHeaderPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchetHeaderPageController.swift; sourceTree = "<group>"; };
@@ -57,8 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				B02113BE22BCE9E900BA9D7C /* PageCell.swift */,
-				B0CD216C22BF63A30051BB76 /* PageGroupCell.swift */,
 				B0CD217222BF75130051BB76 /* PageHeader.swift */,
+				B0DFB60522BFCAEA00CD9A9B /* PageButtonCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,7 +202,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0CD216D22BF63A30051BB76 /* PageGroupCell.swift in Sources */,
 				B02113C522BD087700BA9D7C /* BaseTabBarController.swift in Sources */,
 				B0EEFD7322BCD10E00592470 /* SchetHeaderPageController.swift in Sources */,
 				B0CD216F22BF6CFF0051BB76 /* UITextView+Extension.swift in Sources */,
@@ -211,6 +210,7 @@
 				B02113BF22BCE9E900BA9D7C /* PageCell.swift in Sources */,
 				B0CD216522BF50B00051BB76 /* UIView+Layout.swift in Sources */,
 				B0CD216922BF5C430051BB76 /* BaseListController.swift in Sources */,
+				B0DFB60622BFCAEA00CD9A9B /* PageButtonCell.swift in Sources */,
 				B0EEFD7122BCD10E00592470 /* AppDelegate.swift in Sources */,
 				B0CD216B22BF5F380051BB76 /* SchetHorizontalController.swift in Sources */,
 			);

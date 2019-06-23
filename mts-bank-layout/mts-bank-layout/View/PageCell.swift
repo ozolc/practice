@@ -35,7 +35,7 @@ class PageCell: UICollectionViewCell {
         }
     }
     
-    let horizontalController = SchetHorizontalController()
+//    let horizontalController = SchetHorizontalController()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

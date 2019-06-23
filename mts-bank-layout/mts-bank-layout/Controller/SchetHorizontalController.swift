@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol SchetHorizontalDelegate: class {
-    func getPagesCount() -> Int
-}
-
 class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "cellId"
+    
+    var pageNumber = 1
+    
+    weak var delegate: SchetHeaderPageDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,7 @@ class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlo
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
         }
+        
     }
     
     fileprivate func registerCells() {
@@ -65,8 +66,22 @@ class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlo
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
-//        setActivePageControl(with pageNumber)
-//        pageControl.currentPage = pageNumber
+        self.pageNumber = Int(ceil(targetContentOffset.pointee.x / view.frame.width))
+        
+        delegate?.updateCurrentPage(with: pageNumber)
+        print(self.pageNumber)
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        collectionView.collectionViewLayout.invalidateLayout()
+        
+//        let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
+//        //scroll to indexPath after the rotation is going
+//        DispatchQueue.main.async {
+//            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+//            self.collectionView.reloadData()
+//        }
+        
     }
 }

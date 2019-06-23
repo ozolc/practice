@@ -26,6 +26,7 @@ class PageHeader: UICollectionReusableView {
         setupViews()
         
         pageControl.numberOfPages = horizontalController.getPagesCount()
+        pageControl.currentPage = horizontalController.pageNumber
     }
     
     func setupViews() {
@@ -35,7 +36,8 @@ class PageHeader: UICollectionReusableView {
         horizontalController.view.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor)
         
         addSubview(pageControl)
-        pageControl.anchor(top: horizontalController.view.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
+        pageControl.anchor(top: horizontalController.view.bottomAnchor, leading: leadingAnchor, bottom:
+            bottomAnchor, trailing: trailingAnchor)
         
     }
     
