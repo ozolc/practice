@@ -13,7 +13,8 @@ class BaseTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let schetViewController = SchetHeaderPageController()
+//        let schetViewController = SchetHeaderPageController()
+        let schetViewController = SchetPageController()
         schetViewController.tabBarItem.title = "Счет"
         
         viewControllers = [

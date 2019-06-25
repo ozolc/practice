@@ -6,25 +6,34 @@
 //  Copyright © 2019 Maksim Nosov. All rights reserved.
 //
 
+//protocol SchetHorizontalDelegate: class {
+//    func updateCurrentPage(with number: Int)
+//}
+
 import UIKit
 
 class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "cellId"
+
+    var pageNumber = 0
     
-    var pageNumber = 1
-    
-    weak var delegate: SchetHeaderPageDelegate?
+    // MARK:- Delegate
+    weak var delegate: SchetPageDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .blue
+        collectionView.backgroundColor = .red
     
         registerCells()
         
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
         }
+        
+        self.collectionView.delegate = self
+        
+        collectionView.isPagingEnabled = true
         
     }
     
@@ -49,7 +58,6 @@ class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlo
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
-        cell.backgroundColor = .blue
         let page = pages[(indexPath as NSIndexPath).item]
         cell.page = page
         
@@ -69,19 +77,18 @@ class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlo
         self.pageNumber = Int(ceil(targetContentOffset.pointee.x / view.frame.width))
         
         delegate?.updateCurrentPage(with: pageNumber)
-        print(self.pageNumber)
+        
+        print("pressed")
     }
     
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        
-        collectionView.collectionViewLayout.invalidateLayout()
-        
-//        let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
-//        //scroll to indexPath after the rotation is going
+//    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+//
+//        collectionView.collectionViewLayout.invalidateLayout()
+//        print("will transition")
 //        DispatchQueue.main.async {
-//            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+////            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
 //            self.collectionView.reloadData()
 //        }
-        
-    }
+//
+//    }
 }

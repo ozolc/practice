@@ -1,31 +1,31 @@
 //
-//  ViewController.swift
+//  SchetPageController.swift
 //  mts-bank-layout
 //
-//  Created by Maksim Nosov on 21/06/2019.
+//  Created by Maksim Nosov on 25/06/2019.
 //  Copyright © 2019 Maksim Nosov. All rights reserved.
 //
 
+protocol SchetPageDelegate: class {
+    func updateCurrentPage(with number: Int)
+}
+
 import UIKit
 
-class SchetHeaderPageController: BaseListController, UICollectionViewDelegateFlowLayout {
+class SchetPageController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     var currentPage = 0
     
-//    var horizontalController: SchetHorizontalController?
-    
+    let headerId = "headerId"
     fileprivate let pageButtonId = "pageButtonId"
-    fileprivate let headerId = "headerId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.isPagingEnabled = true
-        
         registerCells()
         
+        collectionView.backgroundColor = .red
     }
-    
     
     fileprivate func registerCells() {
         collectionView.register(PageButtonCell.self, forCellWithReuseIdentifier: pageButtonId)
@@ -35,6 +35,7 @@ class SchetHeaderPageController: BaseListController, UICollectionViewDelegateFlo
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PageHeader
         
+//        print(currentPage)
         return header
     }
     
@@ -51,9 +52,20 @@ class SchetHeaderPageController: BaseListController, UICollectionViewDelegateFlo
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pageButtonId, for: indexPath) as! PageButtonCell
         
         return cell
     }
     
+}
+
+extension SchetPageController: SchetPageDelegate {
+    
+    func updateCurrentPage(with number: Int) {
+        self.currentPage = number
+        print("currentPage = ", number)
+        
+        self.collectionView.reloadData()
+    }
 }
