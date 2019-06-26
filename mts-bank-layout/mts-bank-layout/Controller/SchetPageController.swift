@@ -6,26 +6,47 @@
 //  Copyright © 2019 Maksim Nosov. All rights reserved.
 //
 
-protocol SchetPageDelegate: class {
-    func updateCurrentPage(with number: Int)
-}
+//protocol SchetPageDelegate: class {
+//    func updateCurrentPage(with number: Int)
+//}
 
 import UIKit
 
-class SchetPageController: BaseListController, UICollectionViewDelegateFlowLayout {
+class SchetPageController: BaseListController, UICollectionViewDelegateFlowLayout, SchetHorizontalDelegate {
     
     var currentPage = 0
     
     let headerId = "headerId"
     fileprivate let pageButtonId = "pageButtonId"
     
+    weak var delegate: SchetHorizontalDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         registerCells()
         
-//        collectionView.backgroundColor = .red
         addBackgroundGradient()
+        
+    }
+    
+    func updateCurrentPage(with number: Int) {
+        self.currentPage = number
+        print("currentPage = ", number)
+        
+        
+        reloadLocal()
+        
+//        self.collectionView.collectionViewLayout.invalidateLayout()
+//        self.collectionView.reloadData()
+    }
+    
+    func reloadLocal() {
+        DispatchQueue.main.async {
+        self.collectionView.reloadData()
+        self.collectionView.collectionViewLayout.invalidateLayout()
+        print("local reload")
+        }
     }
     
     fileprivate func registerCells() {
@@ -49,8 +70,11 @@ class SchetPageController: BaseListController, UICollectionViewDelegateFlowLayou
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PageHeader
+        
+        print("header refreshed")
         header.backgroundColor = UIColor.clear
-//        print(currentPage)
+        header.pageControl.currentPage = currentPage
+        
         return header
     }
     
@@ -71,17 +95,16 @@ class SchetPageController: BaseListController, UICollectionViewDelegateFlowLayou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pageButtonId, for: indexPath) as! PageButtonCell
         cell.backgroundColor = UIColor.clear
         
+        print("reload PageButtonCell")
         return cell
     }
     
+//    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        UIView.animate(withDuration: 1, animations: {
+//            var newFrame = cell.frame
+//            cell.frame = CGRect(x: newFrame.origin.x, y: newFrame.origin.y + 100, width: newFrame.width, height: newFrame.height)
+//        })
+//    }
+    
 }
 
-extension SchetPageController: SchetPageDelegate {
-    
-    func updateCurrentPage(with number: Int) {
-        self.currentPage = number
-        print("currentPage = ", number)
-        
-        self.collectionView.reloadData()
-    }
-}

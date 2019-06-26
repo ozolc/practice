@@ -32,7 +32,6 @@ class PageButtonCell: UICollectionViewCell {
         backgroundColor = .red
         
         for (index, button) in buttonArray.enumerated() {
-//        buttonArray.forEach { button in
             button.backgroundColor = UIColor(white: 0.95, alpha: 1)
             button.constrainWidth(constant: 80)
             button.constrainHeight(constant: 80)
@@ -56,13 +55,13 @@ class PageButtonCell: UICollectionViewCell {
             stackView.addArrangedSubview(VerticalStackView(arrangedSubviews: [buttonArray[i], labelArray[i]], spacing: 4))
         }
         
-        stackView.spacing = 16
+        stackView.spacing = 2
         stackView.distribution = .equalCentering
         
         stackView.alignment = .center
         
         addSubview(stackView)
-        stackView.fillSuperview(padding: .init(top: 0, left: 24, bottom: 0, right: 24))
+        stackView.fillSuperview(padding: .init(top: 0, left: 15, bottom: 0, right: 15))
     }
     
     required init?(coder aDecoder: NSCoder) {

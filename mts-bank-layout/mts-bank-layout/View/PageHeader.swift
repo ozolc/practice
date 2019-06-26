@@ -26,7 +26,7 @@ class PageHeader: UICollectionReusableView {
         setupViews()
         
         pageControl.numberOfPages = horizontalController.getPagesCount()
-        pageControl.currentPage = horizontalController.pageNumber
+//        pageControl.currentPage = horizontalController.pageNumber
         
     }
     

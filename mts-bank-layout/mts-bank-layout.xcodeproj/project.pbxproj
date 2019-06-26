@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B00D027622C21F9400E6E5A8 /* SchetPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D027522C21F9400E6E5A8 /* SchetPageController.swift */; };
-		B00D027822C2211700E6E5A8 /* SchetGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D027722C2211700E6E5A8 /* SchetGroupCell.swift */; };
 		B00D027A22C2219B00E6E5A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D027922C2219B00E6E5A8 /* Extensions.swift */; };
 		B02113BF22BCE9E900BA9D7C /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02113BE22BCE9E900BA9D7C /* PageCell.swift */; };
 		B02113C322BD053700BA9D7C /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02113C222BD053700BA9D7C /* Page.swift */; };
@@ -20,7 +19,6 @@
 		B0CD217322BF75130051BB76 /* PageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CD217222BF75130051BB76 /* PageHeader.swift */; };
 		B0DFB60622BFCAEA00CD9A9B /* PageButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DFB60522BFCAEA00CD9A9B /* PageButtonCell.swift */; };
 		B0EEFD7122BCD10E00592470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EEFD7022BCD10E00592470 /* AppDelegate.swift */; };
-		B0EEFD7322BCD10E00592470 /* SchetHeaderPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EEFD7222BCD10E00592470 /* SchetHeaderPageController.swift */; };
 		B0EEFD7622BCD10E00592470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0EEFD7422BCD10E00592470 /* Main.storyboard */; };
 		B0EEFD7822BCD10F00592470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0EEFD7722BCD10F00592470 /* Assets.xcassets */; };
 		B0EEFD7B22BCD10F00592470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0EEFD7922BCD10F00592470 /* LaunchScreen.storyboard */; };
@@ -29,7 +27,6 @@
 
 /* Begin PBXFileReference section */
 		B00D027522C21F9400E6E5A8 /* SchetPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchetPageController.swift; sourceTree = "<group>"; };
-		B00D027722C2211700E6E5A8 /* SchetGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchetGroupCell.swift; sourceTree = "<group>"; };
 		B00D027922C2219B00E6E5A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B02113BE22BCE9E900BA9D7C /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		B02113C222BD053700BA9D7C /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
@@ -42,7 +39,6 @@
 		B0DFB60522BFCAEA00CD9A9B /* PageButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageButtonCell.swift; sourceTree = "<group>"; };
 		B0EEFD6D22BCD10E00592470 /* mts-bank-layout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mts-bank-layout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0EEFD7022BCD10E00592470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B0EEFD7222BCD10E00592470 /* SchetHeaderPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchetHeaderPageController.swift; sourceTree = "<group>"; };
 		B0EEFD7522BCD10E00592470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B0EEFD7722BCD10F00592470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0EEFD7A22BCD10F00592470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,7 +63,6 @@
 				B02113BE22BCE9E900BA9D7C /* PageCell.swift */,
 				B0CD217222BF75130051BB76 /* PageHeader.swift */,
 				B0DFB60522BFCAEA00CD9A9B /* PageButtonCell.swift */,
-				B00D027722C2211700E6E5A8 /* SchetGroupCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -125,7 +120,6 @@
 				B0CD216822BF5C430051BB76 /* BaseListController.swift */,
 				B02113C422BD087700BA9D7C /* BaseTabBarController.swift */,
 				B0CD216A22BF5F380051BB76 /* SchetHorizontalController.swift */,
-				B0EEFD7222BCD10E00592470 /* SchetHeaderPageController.swift */,
 				B00D027522C21F9400E6E5A8 /* SchetPageController.swift */,
 			);
 			path = Controller;
@@ -215,7 +209,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B02113C522BD087700BA9D7C /* BaseTabBarController.swift in Sources */,
-				B0EEFD7322BCD10E00592470 /* SchetHeaderPageController.swift in Sources */,
 				B0CD216F22BF6CFF0051BB76 /* UITextView+Extension.swift in Sources */,
 				B02113C322BD053700BA9D7C /* Page.swift in Sources */,
 				B0F8CE3022C226B900E75429 /* VerticalStackView.swift in Sources */,
@@ -224,7 +217,6 @@
 				B02113BF22BCE9E900BA9D7C /* PageCell.swift in Sources */,
 				B0CD216522BF50B00051BB76 /* UIView+Layout.swift in Sources */,
 				B0CD216922BF5C430051BB76 /* BaseListController.swift in Sources */,
-				B00D027822C2211700E6E5A8 /* SchetGroupCell.swift in Sources */,
 				B0DFB60622BFCAEA00CD9A9B /* PageButtonCell.swift in Sources */,
 				B0EEFD7122BCD10E00592470 /* AppDelegate.swift in Sources */,
 				B0CD216B22BF5F380051BB76 /* SchetHorizontalController.swift in Sources */,

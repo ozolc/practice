@@ -6,20 +6,22 @@
 //  Copyright © 2019 Maksim Nosov. All rights reserved.
 //
 
-//protocol SchetHorizontalDelegate: class {
-//    func updateCurrentPage(with number: Int)
-//}
+protocol SchetHorizontalDelegate: class {
+    func updateCurrentPage(with number: Int)
+}
 
 import UIKit
 
-class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlowLayout {
+class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlowLayout, SchetHorizontalDelegate {
     
     fileprivate let cellId = "cellId"
 
+    var schetPageController: SchetPageController?
+    
     var pageNumber = 0
     
     // MARK:- Delegate
-    weak var delegate: SchetPageDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +33,18 @@ class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlo
             layout.scrollDirection = .horizontal
         }
         
-        self.collectionView.delegate = self
-        
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+        
+        schetPageController = SchetPageController()
+        schetPageController?.delegate = self
+    }
+    
+    func updateCurrentPage(with number: Int) {
+//        delegate?.updateCurrentPage(with: pageNumber)
+        
+        self.schetPageController?.updateCurrentPage(with: pageNumber)
     }
     
     fileprivate func registerCells() {
@@ -76,10 +86,7 @@ class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlo
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         self.pageNumber = Int(ceil(targetContentOffset.pointee.x / view.frame.width))
-        
-        delegate?.updateCurrentPage(with: pageNumber)
-        
-        print("pressed")
+        updateCurrentPage(with: pageNumber)
     }
     
 //    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
