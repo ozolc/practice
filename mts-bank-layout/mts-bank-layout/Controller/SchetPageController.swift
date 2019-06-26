@@ -24,7 +24,8 @@ class SchetPageController: BaseListController, UICollectionViewDelegateFlowLayou
         
         registerCells()
         
-        collectionView.backgroundColor = .red
+//        collectionView.backgroundColor = .red
+        addBackgroundGradient()
     }
     
     fileprivate func registerCells() {
@@ -32,19 +33,33 @@ class SchetPageController: BaseListController, UICollectionViewDelegateFlowLayou
         collectionView.register(PageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
     }
     
+    private func addBackgroundGradient() {
+        let collectionViewBackgroundView = UIView()
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame.size = view.frame.size
+        
+        let colorTop =  UIColor(red: 188.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 204.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientLayer.colors = [colorTop, colorBottom]
+        collectionView.backgroundView = collectionViewBackgroundView
+        collectionView.backgroundView?.layer.addSublayer(gradientLayer)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PageHeader
-        
+        header.backgroundColor = UIColor.clear
 //        print(currentPage)
         return header
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: view.frame.width, height: 250)
+        return .init(width: view.frame.width, height: 200)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 150)
+        return .init(width: view.frame.width, height: 100)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -54,6 +69,7 @@ class SchetPageController: BaseListController, UICollectionViewDelegateFlowLayou
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pageButtonId, for: indexPath) as! PageButtonCell
+        cell.backgroundColor = UIColor.clear
         
         return cell
     }

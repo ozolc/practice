@@ -16,13 +16,15 @@ class BaseTabBarController: UITabBarController {
 //        let schetViewController = SchetHeaderPageController()
         let schetViewController = SchetPageController()
         schetViewController.tabBarItem.title = "Счет"
+        schetViewController.tabBarItem.image = UIImage(named: "schet")?.withRenderingMode(.alwaysOriginal)
+        
         
         viewControllers = [
             schetViewController,
-            createNavController(viewController: UIViewController(), title: "Документы", imageName: "search"),
-            createNavController(viewController: UIViewController(), title: "Создать", imageName: "search"),
-            createNavController(viewController: UIViewController(), title: "Чат", imageName: "search"),
-            createNavController(viewController: UIViewController(), title: "Еще", imageName: "search")
+            createNavController(viewController: UIViewController(), title: "Документы", imageName: "document"),
+            createNavController(viewController: UIViewController(), title: "Создать", imageName: "create"),
+            createNavController(viewController: UIViewController(), title: "Чат", imageName: "chat"),
+            createNavController(viewController: UIViewController(), title: "Еще", imageName: "more")
         ]
     }
     
@@ -33,7 +35,8 @@ class BaseTabBarController: UITabBarController {
         viewController.navigationItem.title = title
         viewController.view.backgroundColor = .white
         navController.tabBarItem.title = title
-        navController.tabBarItem.image = UIImage(named: imageName)
+        navController.tabBarItem.badgeColor = .red
+        navController.tabBarItem.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
         return navController
         
     }

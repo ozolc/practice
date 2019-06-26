@@ -26,9 +26,10 @@ extension UIImageView {
 }
 
 extension UIButton {
-    convenience init(title: String) {
+    convenience init(title: String, image: String = "") {
         self.init(type: .system)
         self.setTitle(title, for: .normal)
+        self.setImage(UIImage(named: image), for: .normal)
     }
 }
 

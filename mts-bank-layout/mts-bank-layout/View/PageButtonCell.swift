@@ -31,13 +31,19 @@ class PageButtonCell: UICollectionViewCell {
     func setupViews() {
         backgroundColor = .red
         
-        buttonArray.forEach { button in
+        for (index, button) in buttonArray.enumerated() {
+//        buttonArray.forEach { button in
             button.backgroundColor = UIColor(white: 0.95, alpha: 1)
-            button.constrainWidth(constant: 70)
-            button.constrainHeight(constant: 70)
+            button.constrainWidth(constant: 80)
+            button.constrainHeight(constant: 80)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-            button.layer.cornerRadius = 70 / 2
-            button.backgroundColor = UIColor.clear
+            let image = UIImage(named: "button\(index)")
+            button.tintColor = .white
+            button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
+            button.imageView?.contentMode = .scaleAspectFit
+            button.layer.cornerRadius = 80 / 2
+            button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+            button.backgroundColor = UIColor(white: 1.0, alpha: 0.35)
         }
         
         labelArray.forEach { (label) in

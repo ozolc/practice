@@ -35,8 +35,6 @@ class PageCell: UICollectionViewCell {
         }
     }
     
-//    let horizontalController = SchetHorizontalController()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -47,7 +45,7 @@ class PageCell: UICollectionViewCell {
         let tv = UITextView()
         tv.isEditable = false
         tv.textContainerInset = UIEdgeInsets(top: 50, left: 5, bottom: 5, right: 5)
-        tv.backgroundColor = .red
+        tv.backgroundColor = UIColor.clear
         return tv
     }()
     

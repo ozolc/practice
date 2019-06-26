@@ -12,8 +12,6 @@ class SchetHeaderPageController: BaseListController, UICollectionViewDelegateFlo
     
     var currentPage = 0
     
-//    var horizontalController: SchetHorizontalController?
-    
     fileprivate let pageButtonId = "pageButtonId"
     fileprivate let headerId = "headerId"
     
@@ -26,7 +24,6 @@ class SchetHeaderPageController: BaseListController, UICollectionViewDelegateFlo
         
     }
     
-    
     fileprivate func registerCells() {
         collectionView.register(PageButtonCell.self, forCellWithReuseIdentifier: pageButtonId)
         collectionView.register(PageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
@@ -34,16 +31,16 @@ class SchetHeaderPageController: BaseListController, UICollectionViewDelegateFlo
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PageHeader
-        
+        header.backgroundColor = UIColor.clear
         return header
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: view.frame.width, height: 250)
+        return .init(width: view.frame.width, height: 150)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 150)
+        return .init(width: view.frame.width, height: 100)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

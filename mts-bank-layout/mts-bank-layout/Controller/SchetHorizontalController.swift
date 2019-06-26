@@ -23,7 +23,7 @@ class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .clear
     
         registerCells()
         
@@ -34,7 +34,7 @@ class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlo
         self.collectionView.delegate = self
         
         collectionView.isPagingEnabled = true
-        
+        collectionView.showsHorizontalScrollIndicator = false
     }
     
     fileprivate func registerCells() {
@@ -59,6 +59,7 @@ class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlo
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
         let page = pages[(indexPath as NSIndexPath).item]
+        cell.backgroundColor = UIColor.clear
         cell.page = page
         
         return cell
@@ -69,7 +70,7 @@ class SchetHorizontalController: BaseListController, UICollectionViewDelegateFlo
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 16, left: 8, bottom: 16, right: 8)
+        return .init(top: 0, left: 8, bottom: -16, right: 8)
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

@@ -14,7 +14,7 @@ class PageHeader: UICollectionReusableView {
     
     lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
-        pc.pageIndicatorTintColor = .green
+        pc.pageIndicatorTintColor = UIColor(white: 0.75, alpha: 0.75)
         pc.currentPageIndicatorTintColor = UIColor.white
         
         return pc
@@ -27,12 +27,12 @@ class PageHeader: UICollectionReusableView {
         
         pageControl.numberOfPages = horizontalController.getPagesCount()
         pageControl.currentPage = horizontalController.pageNumber
+        
     }
     
     func setupViews() {
 
         addSubview(horizontalController.view)
-        horizontalController.view.backgroundColor = .white
         horizontalController.view.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor)
         
         addSubview(pageControl)
